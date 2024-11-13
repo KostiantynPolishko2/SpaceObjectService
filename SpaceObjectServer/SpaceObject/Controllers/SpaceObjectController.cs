@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +10,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SpaceObject.Controllers
 {
+    [EnableCors("AllowAll")]
     [Route("api/[controller]")]
     [ApiController]
     public class SpaceObjectController : ControllerBase
