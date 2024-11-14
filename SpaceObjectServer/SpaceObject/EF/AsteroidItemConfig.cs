@@ -10,6 +10,7 @@ namespace SpaceObject.EF
         {
             builder.ToTable("asteroid_items").HasKey(ai => ai.id);
             builder.HasOne(ai => ai.asteroidProperty).WithOne(ap => ap.asteroidItem).HasForeignKey<AsteroidProperty>(ap => ap.idAsteroidItem).OnDelete(DeleteBehavior.Cascade);
+            builder.HasOne(ai => ai.asteroidImage).WithOne(am => am.asteroidItem).HasForeignKey<AsteroidImage>(am => am.idAsteroidItem).OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

@@ -7,6 +7,7 @@ namespace SpaceObject.EF
     {
         public DbSet<AsteroidItem> asteroidItems { get; set; } = null!;
         public DbSet<AsteroidProperty> asteroidProperties { get; set; } = null!;
+        public DbSet<AsteroidImage> asteroidImages { get; set; } = null!;
 
         public SpaceObjectContext(DbContextOptions<SpaceObjectContext> options) : base(options) { }
 
@@ -14,6 +15,7 @@ namespace SpaceObject.EF
         {
             modelBuilder.ApplyConfiguration(new AsteroidItemConfig());
             modelBuilder.ApplyConfiguration(new AsteroidPropertyConfig());
+            modelBuilder.ApplyConfiguration(new AsteroidImageConfig());
 
             base.OnModelCreating(modelBuilder);
         }

@@ -26,6 +26,7 @@ namespace SpaceObject.DTO
         public int size { get; set; }
         public float weight { get; set; }
         public float speed { get; set; }
+        public string image_path { get; set; } = null!;
 
         public AsteroidInfoDto() { }
 

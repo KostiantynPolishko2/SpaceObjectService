@@ -25,6 +25,8 @@ namespace SpaceObject.Entities
 
         [SwaggerIgnore]
         public AsteroidProperty? asteroidProperty { get; set; }
+        [SwaggerIgnore]
+        public AsteroidImage? asteroidImage { get; set; }
     }
 }
     

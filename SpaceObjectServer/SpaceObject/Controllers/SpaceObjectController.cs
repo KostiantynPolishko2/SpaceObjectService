@@ -51,14 +51,14 @@ namespace SpaceObject.Controllers
         {         
             try
             {
-                var item = context.asteroidItems.Include(ai => ai.asteroidProperty).FirstOrDefault(c => c.Name.Equals(name.ToLower()));
+                var item = context.asteroidItems.Include(ai => ai.asteroidProperty).Include(ai => ai.asteroidImage).FirstOrDefault(c => c.Name.Equals(name.ToLower()));
 
                 if (item == null)
                 {
                     throw new Exception($"AsteroidInfo of {name}  no records in db");
                 }
 
-                var asteroidItemDto = new AsteroidInfoDto(item.asteroidProperty) { Name = item.Name, Category = item.Type };
+                var asteroidItemDto = new AsteroidInfoDto(item.asteroidProperty) { Name = item.Name, Category = item.Type, image_path = item.asteroidImage!.path };
 
                 return Ok(asteroidItemDto);
             }
