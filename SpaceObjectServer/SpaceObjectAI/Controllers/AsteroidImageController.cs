@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 using OpenAI;
 using OpenAI.Images;
 using SpaceObjectAI.Infrastructures;
@@ -6,6 +7,7 @@ using SpaceObjectAI.Interfaces;
 
 namespace SpaceObjectAI.Controllers
 {
+    [EnableCors("AllowAll")]
     [Route("api/[controller]")]
     [ApiController]
     public class AsteroidImageController : ControllerBase
