@@ -1,4 +1,6 @@
 using OpenAI;
+using SpaceObjectAI.Interfaces;
+using SpaceObjectAI.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +19,7 @@ builder.Services.AddTransient<OpenAIClient>(serviceProvider =>
     return new OpenAIClient(apiKey);
 });
 builder.Services.AddControllers();
+builder.Services.AddScoped<IAsteroidImageRepository, AsteroidImageRepository>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
