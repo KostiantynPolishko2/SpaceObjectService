@@ -10,7 +10,7 @@ namespace SpaceObjectAI.Repositories
     {
         private OpenAIClient openAIClient { get; set; }
         private CancellationTokenSource cts { get; set; }
-        private readonly int timeSeconds = 2;
+        private readonly int timeSeconds = 25;
 
         public AsteroidImageRepository(OpenAIClient openAIClient)
         { 

@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
-using OpenAI;
-using OpenAI.Images;
 using SpaceObjectAI.Infrastructures;
 using SpaceObjectAI.Interfaces;
 
@@ -21,12 +19,15 @@ namespace SpaceObjectAI.Controllers
             this.asteroidImageRepository = asteroidImageRepository;
         }
 
-        [HttpGet("asteroid/{asteroidName}", Name = "GetAsteroidImageUrl")]
+        [HttpGet("asteroid-image/{asteroidName}", Name = "GetAsteroidImageUrl")]
         public async Task<ActionResult<string>> GetAsteroidImageUrl([FromRoute] string asteroidName)
         {
+            string name = asteroidName.ToLower();
+            
             try
             {
                 return await asteroidImageRepository.getUrl(asteroidName);
+                //return "https://docfiles.blob.core.windows.net/files/asteroid/asteroid.png";
             }
             catch (AsteroidImageException ex){
                 return NotFound($"Error! msg: {ex.Message} {ex.property}, source: {ex.Source}");
