@@ -2,8 +2,15 @@ using SpaceObjectAI.Interfaces;
 using SpaceObjectAI.Repositories;
 using Azure.Identity;
 using OpenAI;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 // KeyVault connection
 var keyVaultEndpoint = new Uri(Environment.GetEnvironmentVariable("VaultUri"));
@@ -27,9 +34,6 @@ builder.Services.AddTransient<OpenAIClient>(serviceProvider =>
 builder.Services.AddControllers();
 builder.Services.AddScoped<IAsteroidImageRepository, AsteroidImageRepository>();
 
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 
 //add CORS policy for permission treat request from other protocols and ports
 builder.Services.AddCors(options =>
@@ -48,7 +52,10 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "SpaceObjectAI V1");
+    });
 }
 
 app.UseRouting();

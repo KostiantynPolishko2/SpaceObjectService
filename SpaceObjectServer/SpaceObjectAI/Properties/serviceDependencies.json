@@ -1,8 +1,5 @@
 {
   "dependencies": {
-    "apis1": {
-      "type": "apis"
-    },
     "secrets1": {
       "type": "secrets",
       "dynamicId": null
@@ -10,6 +7,9 @@
     "secrets2": {
       "type": "secrets",
       "connectionId": "VaultUri"
+    },
+    "apis1": {
+      "type": "apis"
     }
   }
 }
