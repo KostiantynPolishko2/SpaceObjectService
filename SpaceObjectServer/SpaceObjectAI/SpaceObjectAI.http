@@ -1,0 +1,6 @@
+@SpaceObjectAI_HostAddress = http://localhost:5114
+
+GET {{SpaceObjectAI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
